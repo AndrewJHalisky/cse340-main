@@ -1,0 +1,107 @@
+@media only screen and (max-width: 600px) {
+
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    *,
+    *:before,
+    *:after {
+    box-sizing: border-box;
+    }
+
+    body {
+    background-image: url("/images/site/small_check.jpg");
+    background-repeat: repeat;
+    font-family: "PT Serif", serif;
+    }
+
+    .welcomeCar img{
+        width: 350px;
+    }
+
+    #wrapper {
+    border-width: .50rem;
+    border-style: solid;
+    border-radius: 2rem;
+    height: 68rem;
+    width: 27rem;
+    margin: auto;
+    padding: 12px;
+    }
+
+    .account, .siteName {
+    display: inline-block;
+    width: 20rem;
+    text-align: center;
+    line-height: 2;
+    }
+
+    .siteName a{
+    font-size: x-large;
+    color: black;
+    text-decoration: none;
+    }
+
+    .account a{
+    color: black;
+    text-decoration: none;
+    }
+
+    nav {
+    max-width: 100%;
+    background-color: black;
+    height: 26px;
+    }
+
+    nav ul li {
+    display: inline-block;
+    width: 3.75rem;
+    text-align: center;
+    color: white;
+    }
+
+    .orderAdv, .welcomeCar {
+    position: absolute;
+    }
+
+    .orderAdv {
+    width: 10rem;
+    height: 13.5rem;
+    padding: 10px;
+    line-height: 1;
+    background-color:rgb(255, 185, 185);
+    margin-top: 120px;
+    margin-left: 20px;
+    opacity: 0.85;
+    }
+
+    .orderBtn {
+    width: 100px;
+    height: 30px;
+    background-color: rgb(255, 148, 148);
+    }
+
+    footer {
+    bottom: 25px;
+    position: relative;
+    }
+
+    .upgrades, .reviews {
+    max-width: 345px;
+    padding: 20px;
+    }
+
+    .reviews {
+        margin-top: -10px;
+    }
+
+    .upgrade1, .upgrade2 {
+    max-width: 265px;
+    gap: 15px;
+    padding: 10px;
+    }
+
+    .upgrades img{
+    width: 50px;
+    }
+
+}
+
