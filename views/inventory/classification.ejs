@@ -3,17 +3,4 @@
 <% } else {
   res.redirect('/')
 } %>
-<% messages() %>
-
-<body>
-  <div id="wrapper">
-      <%- include('../partials/header') %>
-      <%- include('../partials/navigations') %>
-
-      <main>
-        <%- grid %>
-      </main>
-      <%- include('../partials/footer') %>
-  </div>
-</body>
-</html>
+<%- grid %>

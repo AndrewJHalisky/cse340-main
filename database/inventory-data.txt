@@ -133,6 +133,7 @@ VALUES   (
     200125,
     'Rust',
     5
+
   ), (
     'Ford',
     'Model T',

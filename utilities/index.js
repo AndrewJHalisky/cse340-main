@@ -28,7 +28,7 @@ Util.getNav = async function (req, res, next) {
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
   let grid
-  if(data > 0){
+  if(data.length > 0){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
       grid += '<li>'
@@ -44,7 +44,7 @@ Util.buildClassificationGrid = async function(data){
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
       grid += '</h2>'
-      grid += '<span>$' 
+      grid += '<span>$'
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
       grid += '</div>'
       grid += '</li>'
@@ -57,11 +57,11 @@ Util.buildClassificationGrid = async function(data){
 }
 
 /* **************************************
-* Build the classification view HTML
+* Build the detail view HTML
 * ************************************ */
 Util.buildClassificationDetails = async function(data){
   let detail
-  if(data > 0){
+  if(data.length > 0){
     detail = '<ul id="inv-display">'
     data.forEach(vehicle => { 
       detail += '<li>'
@@ -70,7 +70,7 @@ Util.buildClassificationDetails = async function(data){
       + 'details"><img src="' + vehicle.inv_image 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
-      detail += '<div class="namePrice">'
+      detail += '<div class="vehicleDetails">'
       detail += '<hr />'
       detail += '<h2>'
       detail += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 

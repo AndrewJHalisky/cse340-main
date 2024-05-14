@@ -61,5 +61,5 @@ VALUES ('Custom'),
 
 REPLACE('GM', 'a huge interior', 'small interiors');
 
-REPLACE('inv_image', '/images', '/images/vehicles'), 
+REPLACE('inv_image', '/images', '/images/vehicles'),
 REPLACE('inv_thumbnails', '/images', '/images/vehicles');
