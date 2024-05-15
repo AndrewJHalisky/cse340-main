@@ -28,8 +28,8 @@ async function getInventoryByClassificationId(classification_id) {
 async function getInventoryByItemID(itemId) {
   try {
     const data = await pool.query(
-      `SELECT * FROM public.inventory AS i 
-      WHERE i.itemId = $1`,
+      `SELECT * FROM public.inventory
+      WHERE inventory.itemId = $1`,
       [itemId]
     )
     return data.rows[0]
