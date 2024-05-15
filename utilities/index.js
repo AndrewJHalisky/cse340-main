@@ -64,12 +64,6 @@ Util.buildClassificationDetails = async function(data){
   if(data.length > 0){
     detail = '<ul id="inv-display">'
     data.forEach(vehicle => { 
-      detail += '<li>'
-      detail +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
-      + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_image 
-      +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-      +' on CSE Motors" /></a>'
       detail += '<div class="vehicleDetails">'
       detail += '<hr />'
       detail += '<p>'
@@ -79,7 +73,6 @@ Util.buildClassificationDetails = async function(data){
       detail += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
       detail += '</div>'
-      detail += '</li>'
     })
     detail += '</ul>'
   } else { 
