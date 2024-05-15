@@ -23,9 +23,8 @@ invCont.buildClassificationDetails = async function(req, res, next){
   const data = await invModel.getInventoryByClassificationDetails(item_id)
   const detail = await utilities.buildClassificationDetails(data)
   let nav = await utilities.getNav()
-  const classDetail = data[0].classification_name
   res.render("./inventory/detail/itemId", {
-    title: classDetail + "vehicles",
+    title: classDetail + `${data[0].inv_make} ${data[0].inv_model}`,
     nav, detail, next
   })
 }
