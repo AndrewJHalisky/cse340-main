@@ -61,14 +61,13 @@ Util.buildClassificationGrid = async function(data){
 * ************************************ */
 Util.buildClassificationDetails = async function(data){
   let detail
-  if(data.length > 0){
+  if(data.length > grid){
     detail = '<ul id="detail-display">'
     data.forEach(vehicle => { 
       detail += '<div class="vehicleDetails">'
       detail += '<hr />'
       detail += '<p>'
-      detail += vehicle.inv_description + '' + vehicle.inv_price + 'price' 
-      + vehicle.inv_color + 'color' + vehicle.inv_miles + 'miles'
+      detail += vehicle.inv_description + '' + vehicle.inv_color + 'color' + vehicle.inv_miles + 'miles'
       detail += '</p>'
       detail += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
