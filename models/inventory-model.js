@@ -25,12 +25,12 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-async function getInventoryByItemId(itemId) {
+async function getInventoryByItemId(item_id) {
   try {
     const data = await pool.query(
       `SELECT * FROM public.inventory
-      WHERE inventory.itemId = $1`,
-      [itemId]
+      WHERE inventory.inv_id = $1`,
+      [item_id]
     )
     return data.rows
   } catch (error) {
