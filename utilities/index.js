@@ -61,7 +61,7 @@ Util.buildClassificationGrid = async function(data){
 * ************************************ */
 Util.buildClassificationDetails = async function(data){
   let detail
-  if(data.length > grid){
+  if(data.length > 0){
     detail = '<ul id="detail-display">'
     data.forEach(vehicle => { 
       detail += '<div class="vehicleDetails">'
