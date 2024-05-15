@@ -25,14 +25,14 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-async function getInventoryByClassificationDetails(classification_det) {
+async function getInventoryByClassificationDetails(classification_name) {
   try {
     const data = await pool.query(
       `SELECT * FROM public.inventory AS i 
-      JOIN public.detail AS c 
-      ON i.classification_det = c.classification_det
-      WHERE i.classification_det = $1`,
-      [classification_det]
+      JOIN public.classification AS c 
+      ON i.classification_name = c.classification_name
+      WHERE i.classification_name = $1`,
+      [classification_name]
     )
     return data.rows
   } catch (error) {
