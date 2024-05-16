@@ -15,6 +15,8 @@ const utilities = require("./utilities")
 const inventoryRoute = require("./routes/inventoryRoute")
 const session = require("express-session")
 const pool = require('./database')
+const account = require('./routes/accountRoute')
+
 
 /* ***********************
  * Middleware
@@ -56,6 +58,8 @@ app.get("/", function(req, res){
 });
 // Inventory routes
 app.use("/inv", inventoryRoute)
+// Account routes
+app.use("/account", require("./routes/accountRoute"))
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
