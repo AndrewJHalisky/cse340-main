@@ -47,8 +47,8 @@
 
     nav {
     max-width: 100%;
-    background-color: black;
-    height: 26px;
+    background-color: rgb(199, 199, 199);
+    height: 45px;
     }
 
     nav ul li {
