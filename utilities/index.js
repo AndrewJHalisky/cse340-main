@@ -1,5 +1,8 @@
 const invModel = require("../models/inventory-model")
 const Util = {}
+const utilities = require(".")
+  const { body, validationResult } = require("express-validator")
+  const validate = {}
 
 /* ************************
  * Constructs the nav HTML unordered list
