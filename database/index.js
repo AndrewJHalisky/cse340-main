@@ -9,7 +9,7 @@ require("dotenv").config()
 let pool
 if (process.env.NODE_ENV == "development") {
   pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL + "ssl=true",
     ssl: {
       rejectUnauthorized: false,
     },
@@ -31,7 +31,7 @@ module.exports = {
 }
 } else {
   pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL + "ssl=true",
   })
   module.exports = pool
 }
