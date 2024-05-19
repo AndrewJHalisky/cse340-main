@@ -3,4 +3,6 @@
 <% } else {
   res.redirect('/')
 } %>
-<%- management %>
+<%- messages() %>
+<% if (errors) { %>
+<% }

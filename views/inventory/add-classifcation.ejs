@@ -3,5 +3,6 @@
     <p>Field is Required</p><br>
     <label for="class-name">Classification Name</label><br>
     <label for="requirement">Name must be alphabetic characters only!</label>
-    <input type="text" id="class-name">
+    <input type="text" id="class-name" pattern="^[a-zA-Z0-9]+$">
+    <input type="submit" value="Add Classification" id="button">
 </form>
