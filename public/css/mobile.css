@@ -1,5 +1,4 @@
 @media only screen and (max-width: 600px) {
-
     @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     *,
     *:before,
@@ -102,6 +101,5 @@
     .upgrades img{
     width: 50px;
     }
-
 }
 

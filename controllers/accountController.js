@@ -9,6 +9,7 @@ async function buildLogin(req, res, next) {
     res.render("account/login", {
       title: "Login",
       nav,
+      next
     })
   }
 
@@ -21,6 +22,7 @@ async function buildRegister(req, res, next) {
       title: "Register",
       nav,
       errors: null,
+      next
     })
   }
   
@@ -34,9 +36,8 @@ async function registerAccount(req, res) {
     const { 
       account_firstname, 
       account_lastname, 
-      account_email, 
+      account_email,
       account_password } = req.body
-
   // Hash the password before storing
   let hashedPassword
   try {

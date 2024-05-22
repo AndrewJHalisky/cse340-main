@@ -1,10 +1,4 @@
-<% if (title) { %>
-<h1><%= title %></h1>
-<% } else {
-  res.redirect('/')
-} %>
-<%- messages() %>
-<% if (errors) { %>
-<p><%= errors %></p>
-<% res.redirect('/')
-} %>
+<h1>Vehicle Management</h1>
+<p>The newcar classification was successfully added.</p>
+<a href="/inventory/add-classification">Add New Classification</a>
+<a href="/inventory/add-vehicle">Add New Vehicle</a>

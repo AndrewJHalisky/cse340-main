@@ -6,13 +6,13 @@
         <label for="lastname">Last Name: </label><br>
         <input type="text" id="account_lastname" required placeholder="Last name is required" value="<%= locals.account_lastname %>"><br>
         <label for="email">Email: </label><br>
-        <input type="text" id="email" required placeholder="Enter a valid email address" value="<%= locals.email %>"><br>
+        <input type="text" id="account_email" required placeholder="Enter a valid email address" value="<%= locals.email %>"><br>
         <label for="password">Password: </label><br>
-        <input type="password" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br>
+        <input type="password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br>
         <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span><br>
         <br>
-        <div id="pswdBtn">Show Password</div>
+        <div id="pswdBtn"><input type="account_password" input onclick="passwordVis()" id="myPassword">Show Password</div>
         <input type="submit" value="Login" id="button">
     </form>
-    <p>Already have an account? <a title="Sign Up" href="/account/login">Sign Up</a></p>
+    <p>Already have an account? <a title="Sign Up" href="/account/login">Sign In</a></p>
     <script src="/js/script.js"></script>

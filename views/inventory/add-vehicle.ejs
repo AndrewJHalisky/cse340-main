@@ -1,0 +1,15 @@
+<h1>Add New Vehicle</h1>
+<form class="class-form">
+    <p>Field is Required</p><br>
+    <label for="classifcation">Classification</label><br>
+    <select name="classification" id="class">
+        <option value="/inventory/classifcation">Custom</option>
+        <option value="/inventory/classifcation">Sedan</option>
+        <option value="/inventory/classifcation">Sports</option>
+        <option value="/inventory/classifcation">SUV</option>
+        <option value="/inventory/classifcation">Truck</option>
+    </select>
+    <label for="requirement">Name must be alphabetic characters only!</label>
+    <input type="text" id="invMake" name="inv_make" pattern="^[a-zA-Z0-9]+$">
+    <input type="submit" value="Add Classification" id="button">
+</form>

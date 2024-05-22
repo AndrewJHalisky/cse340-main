@@ -30,8 +30,8 @@ validate.registationRules = () => {
       .isEmail()
       .normalizeEmail() // refer to validator.js docs
       .withMessage("A valid email is required.")
-      .custom(async (account_email) => {
-        const emailExists = await accountModel.checkExistingEmail(account_email)
+      .custom(async (email) => {
+        const emailExists = await accountModel.checkExistingEmail(email)
         if (emailExists){
           throw new Error("Email exists. Please log in or use different email")
         }
@@ -56,7 +56,7 @@ validate.registationRules = () => {
  * Check data and return errors or continue to registration
  * ***************************** */
 validate.checkRegData = async (req, res, next) => {
-    const { account_firstname, account_lastname, account_email } = req.body
+    const { account_firstname, account_lastname, email } = req.body
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -67,7 +67,7 @@ validate.checkRegData = async (req, res, next) => {
         nav,
         account_firstname,
         account_lastname,
-        account_email,
+        email,
       })
       return
     }
@@ -75,3 +75,27 @@ validate.checkRegData = async (req, res, next) => {
   }
   
   module.exports = validate
+  errors = errors.array().filter(error => error.msg !== "Invalid value");
+
+  validate.checkLoginData = async (req, res, next) => {
+    const { account_firstname, account_lastname, email, password } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("account/login", {
+        errors,
+        title: "Login",
+        nav,
+        account_firstname,
+        account_lastname,
+        email,
+        password
+      })
+      return
+    }
+    next()
+  }
+  
+  module.exports = validate
+  errors = errors.array().filter(error => error.msg !== "Invalid value");
