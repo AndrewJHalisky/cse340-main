@@ -38,21 +38,21 @@ async function getInventoryByItemId(item_id) {
   }
 }
 
-async function getInventoryByAccountId(account_id) {
-  try {
-    const data = await pool.query(
-      `SELECT * FROM public.account AS a 
-      WHERE a.account_id = $1`,
-      [account_id]
-    )
-    return data.rows
-  } catch (error) {
-    console.error("getInventoryByAccountId error " + error)
-  }
-}
+// async function getInventoryByAccountId(account_id) {
+//   try {
+//     const data = await pool.query(
+//       `SELECT * FROM public.account AS a 
+//       WHERE a.account_id = $1`,
+//       [account_id]
+//     )
+//     return data.rows
+//   } catch (error) {
+//     console.error("getInventoryByAccountId error " + error)
+//   }
+// }
 
 module.exports = {getClassifications,
   getInventoryByClassificationId,
   getInventoryByItemId,
-  getInventoryByAccountId
+  // getInventoryByAccountId
 }

@@ -1,7 +1,6 @@
 const invModel = require("../models/inventory-model")
 const acctModel = require("../models/account-model")
 const utilities = require("../utilities/")
-const inventory = require("../inventory/")
 const { accountLogin } = require("./accountController")
 
 const invCont = {}
