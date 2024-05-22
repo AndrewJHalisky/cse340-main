@@ -9,4 +9,11 @@
     </form>
     <p>No account? <a title="Sign Up" href="/account/register">Sign Up</a></p>
     <script src="/js/script.js"></script>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
 

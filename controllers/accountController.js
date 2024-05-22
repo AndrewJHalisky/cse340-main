@@ -37,7 +37,7 @@ async function registerAccount(req, res) {
       account_firstname, 
       account_lastname, 
       account_email,
-      account_password } = req.body
+      account_password} = req.body
   // Hash the password before storing
   let hashedPassword
   try {
@@ -52,7 +52,7 @@ async function registerAccount(req, res) {
     })
   }
   
-  const regResult = await accountModel.accountRegister(
+  const regResult = await accountModel.registerAccount(
     account_firstname,
     account_lastname,
     account_email,
@@ -77,3 +77,47 @@ async function registerAccount(req, res) {
     }
   
   }
+
+/* ****************************************
+*  Process Login
+* *************************************** */
+
+async function accountLogin(req, res){
+  let nav = await utilities.getNav()
+  const { 
+    account_email, 
+    account_password} = req.body
+  const accountData = await accountModel.getEmail(account_email)
+  if (!accountData) {
+    req.flash("notice", 'Sorry, that account is invalid. Please make sure you have the correct email')
+    res.status(400).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+      account_email
+    })
+  return 
+  } 
+  const regResult = await accountModel.accountLogin(
+    account_email,
+    account_password
+  )
+  
+    if (regResult) {
+      req.flash(
+        "notice",
+        `Successful! Logging you in...`
+      )
+      res.status(201).render("inventory/management", {
+        title: "Management",
+        nav,
+      })
+    } else {
+      req.flash("notice", "Sorry, the email or password was incorrect.")
+      res.status(501).render("account/login", {
+        title: "Login",
+        nav,
+      })
+    }
+}
+module.exports = { accountLogin, registerAccount }

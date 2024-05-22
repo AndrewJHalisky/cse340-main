@@ -1,5 +1,8 @@
 const invModel = require("../models/inventory-model")
+const acctModel = require("../models/account-model")
 const utilities = require("../utilities/")
+const inventory = require("../inventory/")
+const { accountLogin } = require("./accountController")
 
 const invCont = {}
 
@@ -26,6 +29,17 @@ invCont.buildClassificationDetails = async function(req, res, next){
   res.render("./inventory/detail", {
     title: `${data[0].inv_make} ${data[0].inv_model}`,
     nav, detail, next
+  })
+}
+
+invCont.buildAccountDetails = async function(req, res, next){
+  const account_id = req.params.accountId
+  const data = await acctModel.getInventoryByAccountId(account_id)
+  const list = await inventory.buildClassificationList(data)
+  let nav = await utilities.getNav()
+  res.render("./account/login", {
+    title: `Logged into: ${data[0].account_type}`,
+    nav, list, next
   })
 }
 

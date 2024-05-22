@@ -3,13 +3,28 @@
     <p>Field is Required</p><br>
     <label for="classifcation">Classification</label><br>
     <select name="classification" id="class">
-        <option value="/inventory/classifcation">Custom</option>
-        <option value="/inventory/classifcation">Sedan</option>
-        <option value="/inventory/classifcation">Sports</option>
-        <option value="/inventory/classifcation">SUV</option>
-        <option value="/inventory/classifcation">Truck</option>
+        <option value="custom">Custom</option>
+        <option value="sedan">Sedan</option>
+        <option value="sports">Sports</option>
+        <option value="suv">SUV</option>
+        <option value="truck">Truck</option>
     </select>
+    <label for="desc">Description</label><br>
+    <textarea id="invMake" name="inv_make" rows="5" cols="50"></textarea>
     <label for="requirement">Name must be alphabetic characters only!</label>
     <input type="text" id="invMake" name="inv_make" pattern="^[a-zA-Z0-9]+$">
+    <label for="price">Price</label>
+    <input type="number" value="4-digit year" pattern="^\d*(\.\d{0,2})?$">
+    <label for="miles">Miles</label>
+    <input type="number" id="invMake" name="inv_make" value="digits only">
+    <label for="color">Color</label>
+    <input type="text" id="invMake" name="inv_make">
     <input type="submit" value="Add Classification" id="button">
 </form>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
