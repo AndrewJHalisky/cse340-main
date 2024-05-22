@@ -36,8 +36,8 @@ invCont.buildAccountDetails = async function(req, res, next){
   const data = await acctModel.getInventoryByAccountId(account_id)
   const list = await inventory.buildClassificationList(data)
   let nav = await utilities.getNav()
-  res.render("./account/login", {
-    title: `Logged into: ${data[0].account_type}`,
+  res.render("./inventory/management", {
+    title: `Logged into: ${data[0].account_firstname} ${data[0].account_lastname}`,
     nav, list, next
   })
 }

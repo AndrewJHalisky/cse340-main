@@ -4,12 +4,5 @@
     <label for="class-name">Classification Name</label><br>
     <label for="requirement">Name must be alphabetic characters only!</label>
     <input type="text" id="invMake" name="inv_make" pattern="^[a-zA-Z0-9]+$">
-    <input type="submit" value="Add Classification" id="button">
+    <a href="/inventory/management">Add Classification</a>
 </form>
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>

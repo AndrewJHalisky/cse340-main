@@ -19,12 +19,5 @@
     <input type="number" id="invMake" name="inv_make" value="digits only">
     <label for="color">Color</label>
     <input type="text" id="invMake" name="inv_make">
-    <input type="submit" value="Add Classification" id="button">
+    <a href="/inventory/management">Add Vehicle</a>
 </form>
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
