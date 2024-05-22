@@ -16,10 +16,3 @@
     </form>
     <p>Already have an account? <a title="Sign Up" href="/account/login">Sign In</a></p>
     <script src="/js/script.js"></script>
-    <% if (errors) { %>
-        <ul class="notice">
-       <% errors.forEach(error => { %>
-         <li><%= error.msg %></li>
-      <%  }) %>
-       </ul>
-      <% } %>
