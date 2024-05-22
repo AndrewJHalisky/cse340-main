@@ -97,4 +97,3 @@ validate.checkRegData = async (req, res, next) => {
   }
   
   module.exports = validate
-  errors = errors.array().filter(error => error.msg !== "Invalid value");
