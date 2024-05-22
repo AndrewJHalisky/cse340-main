@@ -76,7 +76,8 @@ Util.buildClassificationDetails = async function(data){
       detail += 'Color: ' + vehicle.inv_color
       detail += '</p>'
       detail += '<p>'
-      detail += 'Miles: ' + vehicle.inv_miles
+      detail += '<span>$' 
+      + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</span>'
       detail += '</p>'
       detail += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
