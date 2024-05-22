@@ -75,7 +75,6 @@ validate.checkRegData = async (req, res, next) => {
   }
   
   module.exports = validate
-  errors = errors.array().filter(error => error.msg !== "Invalid value");
 
   validate.checkLoginData = async (req, res, next) => {
     const { account_firstname, account_lastname, email, password } = req.body
