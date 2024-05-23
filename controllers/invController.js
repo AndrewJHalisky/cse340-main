@@ -34,11 +34,22 @@ invCont.buildClassificationDetails = async function(req, res, next){
 invCont.buildAccountDetails = async function(req, res, next){
   const account_id = req.params.accountId
   const data = await acctModel.getInventoryByAccountId(account_id)
-  const list = await inventory.buildClassificationList(data)
   let nav = await utilities.getNav()
+  let login = accountLogin
   res.render("./inventory/management", {
     title: `Logged into: ${data[0].account_firstname} ${data[0].account_lastname}`,
-    nav, list, next
+    nav, login, next
+  })
+}
+
+invCont.buildClassificationList = async function(req, res, next){
+  const classification_id = req.params.classificationId
+  const data = await invModel.getInventoryByItemId(classification_id)
+  const classificationList = await utilities.buildClassificationDetails(data)
+  let nav = await utilities.getNav()
+  res.render("./inventory/classification", {
+    title: `${data[0].classification_name}`,
+    nav, classificationList, next
   })
 }
 

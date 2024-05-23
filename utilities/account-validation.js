@@ -68,6 +68,7 @@ validate.checkRegData = async (req, res, next) => {
         account_firstname,
         account_lastname,
         email,
+        password
       })
       return
     }
@@ -77,7 +78,7 @@ validate.checkRegData = async (req, res, next) => {
   module.exports = validate
 
   validate.checkLoginData = async (req, res, next) => {
-    const { account_firstname, account_lastname, email, password } = req.body
+    const { email, password } = req.body
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -86,8 +87,6 @@ validate.checkRegData = async (req, res, next) => {
         errors,
         title: "Login",
         nav,
-        account_firstname,
-        account_lastname,
         email,
         password
       })

@@ -1,5 +1,13 @@
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
 <h1>Add New Vehicle</h1>
-<form class="class-form">
+<form class="vehicle-form" action="/inventory/add-inventory" method="post">
     <p>Field is Required</p><br>
     <label for="classifcation">Classification</label><br>
     <select name="classification" id="class">

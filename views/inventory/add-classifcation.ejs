@@ -1,5 +1,13 @@
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
 <h1>Add New Classification</h1>
-<form class="class-form">
+<form class="class-form" action="/inventory/add-classification" method="post">
     <p>Field is Required</p><br>
     <label for="class-name">Classification Name</label><br>
     <label for="requirement">Name must be alphabetic characters only!</label>
