@@ -2,7 +2,6 @@ const invModel = require("../models/inventory-model")
 const acctModel = require("../models/account-model")
 const utilities = require("../utilities/")
 const { accountLogin } = require("./accountController")
-
 const invCont = {}
 
 /* ***************************
@@ -36,7 +35,7 @@ invCont.buildAccountDetails = async function(req, res, next){
   const data = await acctModel.getInventoryByAccountId(account_id)
   let nav = await utilities.getNav()
   let login = accountLogin
-  res.render("./inventory/management", {
+  res.render("/inventory/management", {
     title: `Logged into: ${data[0].account_firstname} ${data[0].account_lastname}`,
     nav, login, next
   })
@@ -47,10 +46,38 @@ invCont.buildClassificationList = async function(req, res, next){
   const data = await invModel.getInventoryByItemId(classification_id)
   const classificationList = await utilities.buildClassificationDetails(data)
   let nav = await utilities.getNav()
-  res.render("./inventory/classification", {
+  res.render("/inventory/classification", {
     title: `${data[0].classification_name}`,
     nav, classificationList, next
   })
 }
+
+/* ***************************
+ *  Build inventory registration view
+ * ************************** */
+invCont.registerView = async function (res, next) {
+  let nav = await utilities.getNav()
+  res.render("/inventory/add-inventory", {
+    title: "Add Inventory", 
+    nav,
+    errors: null,
+    next
+  })
+}
+
+invCont.classificationView = async function (res, next) {
+  let nav = await utilities.getNav()
+  res.render("/inventory/add-classification", {
+    title: "Add Classification", 
+    nav,
+    errors: null,
+    next
+  })
+}
+/* ***************************
+ *  Build error view
+ * ************************** */
+
+
 
 module.exports = invCont

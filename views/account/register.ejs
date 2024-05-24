@@ -1,10 +1,3 @@
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
 
 <p>All fields are required</p>
     <h1>Register</h1>
@@ -33,5 +26,5 @@
         </script>
         <input type="submit" value="Login" id="button">
     </form>
-    <p>Already have an account? <a title="Sign Up" href="/account/login">Sign In</a></p>
+    <p>Already have an account? <a title="Sign In" href="/account/login">Sign In</a></p>
     <script src="/js/script.js"></script>

@@ -1,4 +1,12 @@
-<h1>Vehicle Management</h1>
-<p>The newcar classification was successfully added.</p>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+
+<h1>Vehicle Management</h1><br>
 <a href="/inventory/add-classification">Add New Classification</a>
 <a href="/inventory/add-inventory">Add New Vehicle</a>

@@ -14,9 +14,10 @@ const baseController = require("./controllers/baseController")
 const utilities = require("./utilities")
 const inventoryRoute = require("./routes/inventoryRoute")
 const session = require("express-session")
-const pool = require('./database')
+const pool = require('./database/')
 const account = require('./routes/accountRoute')
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 
 /* ***********************
@@ -32,6 +33,8 @@ app.use(session({
   saveUninitialized: true,
   name: 'sessionId',
 }))
+app.use(cookieParser())
+// app.use(utilities.checkJWTToken)
 
 // Express Messages Middleware
 app.use(require('connect-flash')())
@@ -61,7 +64,7 @@ app.get("/", function(req, res){
 // Inventory routes
 app.use("/inv", inventoryRoute)
 // Account routes
-app.use("/account", account)
+app.use("/account", require("./routes/accountRoute"))
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})

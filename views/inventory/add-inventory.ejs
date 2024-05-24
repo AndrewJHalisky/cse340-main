@@ -7,25 +7,30 @@
   <% } %>
 
 <h1>Add New Vehicle</h1>
-<form class="vehicle-form" action="/inventory/add-inventory" method="post">
-    <p>Field is Required</p><br>
+<p>All fields are required</p>
+<form action="/inventory/add-inventory" method="post">
     <label for="classifcation">Classification</label><br>
-    <select name="classification" id="class">
-        <option value="custom">Custom</option>
-        <option value="sedan">Sedan</option>
-        <option value="sports">Sports</option>
-        <option value="suv">SUV</option>
-        <option value="truck">Truck</option>
-    </select>
-    <label for="desc">Description</label><br>
-    <textarea id="invMake" name="inv_make" rows="5" cols="50"></textarea>
-    <label for="requirement">Name must be alphabetic characters only!</label>
-    <input type="text" id="invMake" name="inv_make" pattern="^[a-zA-Z0-9]+$">
-    <label for="price">Price</label>
-    <input type="number" value="4-digit year" pattern="^\d*(\.\d{0,2})?$">
+    <%- classifcationList %>
+
+    <label for="invDescription">Description</label><br>
+    <textarea rows="5" cols="50" required><% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea>
+
+    <label for="invMake">Vehicle Name</label>
+    <input type="text" pattern="^[a-zA-Z0-9]+$" required minlength="3" value="Min of 3 characters"<% if(locals.inv_make) { %>value="<%= locals.inv_make %>"<% } %>>
+
+    <label for="invModel">Vehicle Model</label>
+    <input type="text" pattern="^[a-zA-Z0-9]+$" required minlength="3" value="Min of 3 characters"<% if(locals.inv_model) { %> value = "<%= locals.inv_model %>"<% } %>>
+
+    <label for="invYear">Year</label>
+    <input type="number" value="4-digit year" pattern="^(19\20)\d(2)$" maxlength="4" required<% if(locals.inv_year) { %> value = "<%= locals.inv_year %>"<% } %>>
+
+    <label for="invPrice">Price</label>
+    <input type="number" value="price" pattern="^\d*(\.\d{0,2})?$" maxlength="4" required<% if(locals.inv_price) { %> value = "<%= locals.inv_price %>"<% } %>>
+
     <label for="miles">Miles</label>
-    <input type="number" id="invMake" name="inv_make" value="digits only">
+    <input type="number"value="digits only" pattern="^\d+$" required <% if(locals.inv_miles) { %> value = "<%= locals.inv_miles %>"<% } %>>
+
     <label for="color">Color</label>
-    <input type="text" id="invMake" name="inv_make">
+    <input type="text" id="invMake" name="inv_make" <% if(locals.inv_color) { %> value = "<%= locals.inv_color %>"<% } %>>
     <a href="/inventory/management">Add Vehicle</a>
 </form>

@@ -51,8 +51,23 @@ async function getInventoryByAccountId(account_id) {
   }
 }
 
+async function addClassification(account_firstname, account_lastname, account_email, account_password){
+  try {
+    const data = 
+    `INSERT INTO classification
+    (account_firstname, account_lastname, account_email, account_password, account_type)
+    VALUES
+    ($1, $2, $3, $4, 'Client')
+    RETURNING *`
+    return await pool.query(data, [account_firstname, account_lastname, account_email, account_password])
+  } catch (error) {
+    console.error("getInventoryByAccountId error " + error)
+  } return error.message
+}
+
 module.exports = {getClassifications,
   getInventoryByClassificationId,
   getInventoryByItemId,
-  getInventoryByAccountId
+  getInventoryByAccountId,
+  addClassification
 }

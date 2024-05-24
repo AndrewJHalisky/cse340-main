@@ -5,10 +5,11 @@ const invController = require("../controllers/invController")
 const accountController = require("../controllers/accountController")
 const utilities = require("../utilities")
 const regValidate = require('../utilities/account-validation')
+// const accounts = require("/account")
 
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
-router.post('/register', utilities.handleErrors(accountController.registerAccount))
+
 // Process the registration data
 router.post(
     "/register",
@@ -19,9 +20,12 @@ router.post(
 // Process the login attempt
 router.post(
   "/login",
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin),
   (req, res) => {
     res.status(200).send('login process')
-  }
+  } // Will use this for the W04 Assignment
+  // utilities.handleErrors(accountController.accountLogin),
 )
 
 module.exports = router;
