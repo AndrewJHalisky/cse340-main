@@ -5,8 +5,12 @@
   <%  }) %>
    </ul>
   <% } %>
-
-
-<h1>Vehicle Management</h1><br>
+<h1>Vehcile Management</h1><br>
 <a href="/inventory/add-classification">Add New Classification</a>
 <a href="/inventory/add-inventory">Add New Vehicle</a>
+<h2>Management Inventory</h2><br>
+<p>Select classification from the list</p>
+<%- classifcationList %>
+<table id="inventoryDisplay"></table>
+<noscript>JavaScript must be enabled to use this page.</noscript>
+<script src="../../js/inventory.js"></script>

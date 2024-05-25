@@ -5,7 +5,6 @@ const invController = require("../controllers/invController")
 const accountController = require("../controllers/accountController")
 const utilities = require("../utilities")
 const regValidate = require('../utilities/account-validation')
-// const accounts = require("/account")
 
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.get("/login", utilities.handleErrors(accountController.buildLogin))

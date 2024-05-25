@@ -9,8 +9,8 @@
 <h1>Add New Vehicle</h1>
 <p>All fields are required</p>
 <form action="/inventory/add-inventory" method="post">
-    <label for="classifcation">Classification</label><br>
-    <%- classifcationList %>
+    <label for="classifcationList">Classification</label><br>
+    <%- classifcationSelect %>
 
     <label for="invDescription">Description</label><br>
     <textarea rows="5" cols="50" required><% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea>
@@ -28,9 +28,14 @@
     <input type="number" value="price" pattern="^\d*(\.\d{0,2})?$" maxlength="4" required<% if(locals.inv_price) { %> value = "<%= locals.inv_price %>"<% } %>>
 
     <label for="miles">Miles</label>
-    <input type="number"value="digits only" pattern="^\d+$" required <% if(locals.inv_miles) { %> value = "<%= locals.inv_miles %>"<% } %>>
+    <input type="number" value="digits only" pattern="^\d+$" required <% if(locals.inv_miles) { %> value = "<%= locals.inv_miles %>"<% } %>>
 
     <label for="color">Color</label>
-    <input type="text" id="invMake" name="inv_make" <% if(locals.inv_color) { %> value = "<%= locals.inv_color %>"<% } %>>
-    <a href="/inventory/management">Add Vehicle</a>
+    <input type="text" <% if(locals.inv_color) { %> value = "<%= locals.inv_color %>"<% } %>>
+
+    <input type="hidden" name="inv_id"
+  <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+  <% } %>>
+
+    <buttom type="submit" name="submit">Update Vehicle</button>
 </form>

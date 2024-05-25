@@ -8,8 +8,8 @@
 
 <h1>Add New Classification</h1>
 <form action="/inventory/add-classification" method="post">
-    <label for="classifcation">Classification</label><br>
-    <%- classifcationList %>
+    <label for="classifcationList">Classification</label><br>
+    <%- classifcationSelect %>
 
     <label for="invMake">Vehicle Name</label>
     <input type="text" pattern="^[a-zA-Z0-9]+$" required minlength="3" value="Min of 3 characters"<% if(locals.inv_make) { %>value="<%= locals.inv_make %>"<% } %>>
@@ -17,5 +17,5 @@
     <label for="invModel">Vehicle Model</label>
     <input type="text"pattern="^[a-zA-Z0-9]+$" required minlength="3" value="Min of 3 characters"<% if(locals.inv_model) { %> value = "<%= locals.inv_model %>"<% } %>>
     
-    <a href="/inventory/management">Add Classification</a>
+    <buttom type="submit" name="submit">Update Classification</button>
 </form>

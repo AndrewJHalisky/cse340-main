@@ -1,3 +1,10 @@
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
 
 <p>All fields are required</p>
     <h1>Register</h1>
