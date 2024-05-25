@@ -8,7 +8,7 @@
 
 <h1>Add New Vehicle</h1>
 <p>All fields are required</p>
-<form action="/inventory/add-inventory" method="post">
+<form action="/inv/add-inventory" method="post">
     <label for="classifcationList">Classification</label><br>
     <%- classifcationSelect %>
 
@@ -27,10 +27,10 @@
     <label for="invPrice">Price</label>
     <input type="number" value="price" pattern="^\d*(\.\d{0,2})?$" maxlength="4" required<% if(locals.inv_price) { %> value = "<%= locals.inv_price %>"<% } %>>
 
-    <label for="miles">Miles</label>
+    <label for="invMiles">Miles</label>
     <input type="number" value="digits only" pattern="^\d+$" required <% if(locals.inv_miles) { %> value = "<%= locals.inv_miles %>"<% } %>>
 
-    <label for="color">Color</label>
+    <label for="invColor">Color</label>
     <input type="text" <% if(locals.inv_color) { %> value = "<%= locals.inv_color %>"<% } %>>
 
     <input type="hidden" name="inv_id"

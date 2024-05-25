@@ -3,16 +3,29 @@ const express = require("express")
 const utilities = require("../utilities")
 const router = new express.Router() 
 const invController = require("../controllers/invController");
+const regValidate = require('../utilities/inventory-validation')
 const { addClassification } = require("../models/inventory-model");
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
-// router.get("/detail/:itemId", invController.buildManagementDetails);
 router.get("/list/:accountId", invController.buildAccountDetails);
 
-router.get("/newClassification", utilities.handleErrors(invController.classificationView));
-router.get("/newRegister", utilities.handleErrors(invController.registerView));
+router.post("/addClassification", utilities.handleErrors(invController, addClassification));
+router.post("/update", utilities.handleErrors(invController.updateInventory));
 
-router.post("/addClassification", utilities.handleErrors(invController, addClassification))
-router.post("/update/", invController.updateInventory)
+router.get("/add-classification", utilities.handleErrors(invController.classificationView));
+router.get("/add-inventory", utilities.handleErrors(invController.registerView));
+
+// Process the classification data
+router.post(
+    "/add-classification",
+    regValidate.checkClassificationData,
+    utilities.handleErrors(invController.classificationView)
+  )
+// Process the inventory attempt
+router.post(
+  "/add-inventory",
+  regValidate.checkInventoryData,
+  utilities.handleErrors(invController.registerView)
+)
 module.exports = router;

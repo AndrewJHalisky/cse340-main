@@ -17,19 +17,43 @@ validate.registrationRules = () => {
 }
 
 validate.checkClassificationData = async (req, res, next) => {
-    const { classification_name } = req.body
+    const {  } = req.body
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
       res.render("inventory/add-classification", {
-        errors,
+        errors: null,
         title: "Add New Classification",
         nav,
-        classification_name,
+        
       })
       return
     }
     next()
   }
+
+  validate.checkInventoryData = async (req, res, next) => {
+    const { inv_make, inv_model, inv_year, inv_price, inv_miles, inv_color } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("inventory/add-inventory", {
+        errors: null,
+        title: "Add New Inventory",
+        nav,
+        inv_description,
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_price,
+        inv_miles,
+        inv_color
+      })
+      return
+    }
+    next()
+  }
+
   module.exports = validate
