@@ -112,13 +112,12 @@ async function accountLogin(req, res) {
  }
  module.exports = { accountLogin }
 
- async function buildLoggedIn(req, res, next) {
+ async function buildLoggedIn(req, res) {
   let nav = await utilities.getNav()
   res.render("/account/loggedin", {
     title: "Success, you\'re logged in!",
     nav,
-    errors: null,
-    next
+    errors: null
   })
 }
 module.exports = { buildLoggedIn }
