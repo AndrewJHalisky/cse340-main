@@ -13,7 +13,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   const grid = await utilities.buildClassificationGrid(data)
   let nav = await utilities.getNav()
   const className = data[0].classification_name
-  res.render("/inv/classification", {
+  res.render("./inventory/classification", {
     title: className + " vehicles",
     nav, grid, next
   })
@@ -24,7 +24,7 @@ invCont.buildClassificationDetails = async function(req, res, next){
   const data = await invModel.getInventoryByItemId(item_id)
   const detail = await utilities.buildClassificationDetails(data)
   let nav = await utilities.getNav()
-  res.render("/inv/detail", {
+  res.render("./inventory/detail", {
     title: `${data[0].inv_make} ${data[0].inv_model}`,
     nav, detail, next
   })
@@ -35,12 +35,11 @@ invCont.buildAccountDetails = async function(req, res, next){
   const data = await acctModel.getInventoryByAccountId(account_id)
   let nav = await utilities.getNav()
   let login = accountLogin
-  res.render("/inv/management", {
+  res.render("./inventory/management", {
     title: `Logged into: ${data[0].account_firstname} ${data[0].account_lastname}`,
     nav, login, next
   })
 }
-
 
 invCont.buildClassificationList = async function (req, res, next) {
   const classification_id = req.params.classificationId
@@ -61,18 +60,18 @@ invCont.buildClassificationList = async function (req, res, next) {
 /* ***************************
  *  Build inventory registration view
  * ************************** */
-invCont.registerView = async function (res, next) {
+async function registerView(res, req, next) {
   let nav = await utilities.getNav()
-  res.render("inv/add-inventory", {
+  res.render("inventory/add-inventory", {
     title: "Add Inventory", 
     nav,
     errors: null
   })
 }
 
-invCont.classificationView = async function (res, next) {
+async function classificationView(res, req, next) {
   let nav = await utilities.getNav()
-  res.render("inv/add-classification", {
+  res.render("inventory/add-classification", {
     title: "Add Classification", 
     nav,
     errors: null
@@ -101,7 +100,7 @@ invCont.editInventoryView = async function (req, res, next) {
   const itemData = await invModel.getInventoryById(inv_id)
   const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
   const itemName = `${itemData.inv_make} ${itemData.inv_model}`
-  res.render("inv/edit-inventory", {
+  res.render("./inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
     classificationSelect: classificationSelect,
@@ -180,4 +179,4 @@ invCont.updateInventory = async function (req, res, next) {
   }
 }
 
-module.exports = invCont
+module.exports = invCont, registerView, classificationView
