@@ -25,8 +25,6 @@ async function buildRegister(req, res, next) {
       errors: null,
     })
   }
-  
-  module.exports = { buildLogin, buildRegister }
 
 /* ****************************************
 *  Process Registration
@@ -76,7 +74,6 @@ async function registerAccount(req, res) {
       })
     }
   }
-module.exports = { registerAccount }
 
 /* ****************************************
  *  Process login request
@@ -110,7 +107,6 @@ async function accountLogin(req, res) {
    return new Error('Access Forbidden')
   }
  }
- module.exports = { accountLogin }
 
  async function buildLoggedIn(req, res) {
   let nav = await utilities.getNav()
@@ -120,4 +116,4 @@ async function accountLogin(req, res) {
     errors: null
   })
 }
-module.exports = { buildLoggedIn }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildLoggedIn }
