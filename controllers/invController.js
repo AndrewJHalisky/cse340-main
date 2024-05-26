@@ -32,8 +32,8 @@ invCont.buildClassificationDetails = async function(req, res, next){
 
 invCont.buildAccountDetails = async function(req, res, next){
   let nav = await utilities.getNav()
-  res.render("inventory/management", {
-    title: `Successfully logged in!`,
+  res.render("./inventory/management", {
+    title: `Successfully registered!`,
     nav, errors: null
   })
 }

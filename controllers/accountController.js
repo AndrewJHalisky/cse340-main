@@ -28,17 +28,7 @@ async function buildRegister(req, res) {
     })
   }
 
-  /* ****************************************
-*  Deliver view of logged in form
-* *************************************** */
 
-async function buildLoggedIn(req, res) {
-  let nav = await utilities.getNav()
-  res.render("account/loggedin", {
-    title: "Success, you\'re logged in!",
-    nav
-  })
-}
 
 
 /* ****************************************
@@ -122,6 +112,18 @@ async function accountLogin(req, res) {
    return new Error('Access Forbidden')
   }
  }
+
+  /* ****************************************
+*  Deliver view of logged in form
+* *************************************** */
+
+async function buildLoggedIn(req, res) {
+  let nav = await utilities.getNav()
+  res.render("./account/loggedin", {
+    title: "Success, you\'re logged in!",
+    nav
+  })
+}
 
 
 module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildLoggedIn }
