@@ -56,4 +56,19 @@ validate.checkClassificationData = async (req, res, next) => {
     next()
   }
 
+  validate.checkManagementData = async (req, res, next) => {
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("inventory/managment", {
+        errors: null,
+        title: "Vehicle Management",
+        nav
+      })
+      return
+    }
+    next()
+  }
+
   module.exports = validate

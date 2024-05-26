@@ -61,7 +61,7 @@ validate.checkRegData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
-      res.render("account/register", {
+      res.render("/register", {
         errors,
         title: "Registration",
         nav,
@@ -83,12 +83,27 @@ validate.checkRegData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
-      res.render("account/login", {
+      res.render("/login", {
         errors,
         title: "Login",
         nav,
         email,
         password
+      })
+      return
+    }
+    next()
+  }
+
+  validate.checkLoggedInData = async (req, res, next) => {
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("/loggedin", {
+        errors: null,
+        title: "Logged In",
+        nav
       })
       return
     }

@@ -1,12 +1,13 @@
 const utilities = require("../utilities")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const accountModel = require("../models/account-model")
 require("dotenv").config()
 
 /* ****************************************
 *  Deliver login view
 * *************************************** */
-async function buildLogin(req, res, next) {
+async function buildLogin(req, res) {
     let nav = await utilities.getNav()
     res.render("account/login", {
       title: "Login",
@@ -18,7 +19,7 @@ async function buildLogin(req, res, next) {
   /* ****************************************
 *  Deliver registration view
 * *************************************** */
-async function buildRegister(req, res, next) {
+async function buildRegister(req, res) {
     let nav = await utilities.getNav()
     res.render("account/register", {
       title: "Register",
@@ -26,6 +27,19 @@ async function buildRegister(req, res, next) {
       errors: null,
     })
   }
+
+  /* ****************************************
+*  Deliver view of logged in form
+* *************************************** */
+
+async function buildLoggedIn(req, res) {
+  let nav = await utilities.getNav()
+  res.render("account/loggedin", {
+    title: "Success, you\'re logged in!",
+    nav
+  })
+}
+
 
 /* ****************************************
 *  Process Registration
@@ -109,12 +123,5 @@ async function accountLogin(req, res) {
   }
  }
 
- async function buildLoggedIn(req, res) {
-  let nav = await utilities.getNav()
-  res.render("/account/loggedin", {
-    title: "Success, you\'re logged in!",
-    nav,
-    errors: null
-  })
-}
+
 module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildLoggedIn }

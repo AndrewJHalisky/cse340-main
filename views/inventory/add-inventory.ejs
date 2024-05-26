@@ -10,7 +10,6 @@
 <p>All fields are required</p>
 <form action="./inventory/add-inventory" method="post">
     <label for="classifcationList">Classification</label><br>
-    <%- classifcationSelect %>
 
     <label for="invDescription">Description</label><br>
     <textarea rows="5" cols="50" required><% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea>

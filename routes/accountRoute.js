@@ -8,10 +8,6 @@ const regValidate = require('../utilities/account-validation')
 
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
-router.get(
-  "/",
-  utilities.checkLogin,
-  utilities.handleErrors(accountController.buildLoggedIn))
 
 // Process the registratizon data
 router.post(
@@ -29,6 +25,16 @@ router.post(
     res.status(200).send('login process')
   } // Will use this for the W04 Assignment
   // utilities.handleErrors(accountController.accountLogin),
+)
+
+router.get(
+  "/loggedin",
+  utilities.handleErrors(accountController.buildLoggedIn))
+
+router.post(
+  "/loggedin",
+  regValidate.checkLoggedInData,
+  utilities.handleErrors(accountController.checkLoggedInData)
 )
 
 module.exports = router;

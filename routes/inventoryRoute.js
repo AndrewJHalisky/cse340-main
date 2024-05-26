@@ -22,10 +22,19 @@ router.post(
     regValidate.checkClassificationData,
     utilities.handleErrors(invController.classificationView)
   )
-// Process the inventory attempt
+// Process the inventory data
 router.post(
   "/add-inventory",
   regValidate.checkInventoryData,
   utilities.handleErrors(invController.registerView)
 )
+
+router.get("/management", utilities.handleErrors(invController.buildAccountDetails));
+
+router.post(
+    "/management",
+    regValidate.checkManagementData,
+    utilities.handleErrors(invController.buildAccountDetails)
+)
+
 module.exports = router;

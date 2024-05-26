@@ -31,13 +31,10 @@ invCont.buildClassificationDetails = async function(req, res, next){
 }
 
 invCont.buildAccountDetails = async function(req, res, next){
-  const account_id = req.params.accountId
-  const data = await acctModel.getInventoryByAccountId(account_id)
   let nav = await utilities.getNav()
-  let login = accountLogin
-  res.render("./inventory/management", {
-    title: `Logged into: ${data[0].account_firstname} ${data[0].account_lastname}`,
-    nav, login, next
+  res.render("inventory/management", {
+    title: `Successfully logged in!`,
+    nav, errors: null
   })
 }
 
@@ -60,7 +57,7 @@ invCont.buildClassificationList = async function (req, res, next) {
 /* ***************************
  *  Build inventory registration view
  * ************************** */
-async function registerView(res, req, next) {
+invCont.registerView = async function (req, res, next) {
   let nav = await utilities.getNav()
   res.render("inventory/add-inventory", {
     title: "Add Inventory", 
@@ -69,7 +66,7 @@ async function registerView(res, req, next) {
   })
 }
 
-async function classificationView(res, req, next) {
+invCont.classificationView = async function (req, res, next) {
   let nav = await utilities.getNav()
   res.render("inventory/add-classification", {
     title: "Add Classification", 
@@ -179,4 +176,4 @@ invCont.updateInventory = async function (req, res, next) {
   }
 }
 
-module.exports = invCont, registerView, classificationView
+module.exports = invCont

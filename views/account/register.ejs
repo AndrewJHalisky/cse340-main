@@ -1,6 +1,6 @@
 <p>All fields are required</p>
     <h1>Register</h1>
-    <form class="registerform" id="registerform" action="/account/register" method="post">
+    <form class="registerform" id="registerform" action="/account/login" method="post">
         <label for="firstname">First Name: </label><br>
         <input type="text" id="account_firstname" required placeholder="First name is required" value="<%= locals.account_firstname %>"><br>
         <label for="lastname">Last Name: </label><br>
@@ -23,7 +23,7 @@
                     }
                 }
         </script>
-        <input type="submit" value="Login" id="button">
+        <input type="submit" value="Register" id="button">
     </form>
     <p>Already have an account? <a title="Sign In" href="/account/login">Sign In</a></p>
     <script src="/js/script.js"></script>
