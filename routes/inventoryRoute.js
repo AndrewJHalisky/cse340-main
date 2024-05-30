@@ -37,4 +37,11 @@ router.post(
     utilities.handleErrors(invController.buildAccountDetails)
 )
 
+router.get("/delete/:invId", utilities.handleErrors(invController.deleteView))
+
+router.post("/delete-confirm", 
+    regValidate.checkDeleteData, 
+    utilities.handleErrors(invController.deleteView)
+)
+
 module.exports = router;

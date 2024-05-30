@@ -44,6 +44,12 @@ app.use(function(req, res, next){
 })
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.authenticated = !req.user.anonymous
+  next()
+})
 /* ***********************
  * View Engine and Templates
  *************************/

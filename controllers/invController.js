@@ -38,19 +38,50 @@ invCont.buildAccountDetails = async function(req, res, next){
   })
 }
 
-invCont.buildClassificationList = async function (req, res, next) {
-  const classification_id = req.params.classificationId
-  const data = await invModel.getInventoryByItemId(classification_id)
-  const classificationList = await utilities.buildManagementDetails(data)
-  invCont.buildManagementView = async function (req, res, next) {
-    let nav = await utilities.getNav()
-    const classificationSelect = await utilities.buildClassificationList()
-    // ... This is the empty space ...
-    res.render("inv/management", {
-      // ... remaining render code is not shown ...
-      title: `${data[0].classification_name}`,
-      nav, classificationList, next
-    })
+// invCont.buildClassificationList = async function (req, res, next) {
+//   const classification_id = req.params.classificationId
+//   const data = await invModel.getInventoryByClassificationId(classification_id)
+//   const classificationList = await utilities.buildManagementDetails(data)
+//   invCont.buildManagementView = async function (req, res, next) {
+//     let nav = await utilities.getNav()
+//     const classificationSelect = await utilities.buildClassificationList()
+//     // ... This is the empty space ...
+//     res.render("inv/management", {
+//       // ... remaining render code is not shown ...
+//       title: `${data[0].classification_name}`,
+//       nav, classificationList, next
+//     })
+//   }
+// }
+
+invCont.deleteView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.invId)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getInventoryByItemId(inv_id)
+  const itemName = `${itemData[0].invMake} ${itemData[0].invModel}`
+  res.render("./inventory/delete-confirm", {
+    title: "Delete" + itemName,
+    nav,
+    errors: null,
+    inv_id: itemData[0].inv_id,
+    inv_make: itemData[0].inv_make,
+    inv_model: itemData[0].inv_model,
+    inv_year: itemData[0].inv_year,
+    inv_price: itemData[0].inv_price
+  })
+}
+
+invCont.deleteItem = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  inv_id = parseInt(inv_id)
+  const deleteResult = await invModel.deleteInventoryItem(inv_id)
+  if (deleteResult) {
+    req.flash("notice", 'The deletion was successful.')
+    res.redirect('/inv/')
+  }
+  else {
+    req.flash("notice", 'Sorry, unable to delete.')
+    res.redirect("/inv/delete/" + inv_id)
   }
 }
 
@@ -94,7 +125,7 @@ invCont.getInventoryJSON = async (req, res, next) => {
 invCont.editInventoryView = async function (req, res, next) {
   const inv_id = parseInt(req.params.inv_id)
   let nav = await utilities.getNav()
-  const itemData = await invModel.getInventoryById(inv_id)
+  const itemData = await invModel.getInventoryByItemId(inv_id)
   const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
   const itemName = `${itemData.inv_make} ${itemData.inv_model}`
   res.render("./inventory/edit-inventory", {

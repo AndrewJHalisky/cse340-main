@@ -1,0 +1,30 @@
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<form action="/inv/delete-confirm" method="post">
+    <fieldset>
+        <label for="invMake">Make</label>
+        <input type="text" readonly <% if(locals.inv_make) { %>
+        value="<%= locals.inv_make %>"<% } %>>
+
+        <label for="invModel">Model</label>
+        <input type="invModel" readonly <% if(locals.inv_model) { %>
+        value="<%= locals.inv_model %>"<% } %>>
+
+        <label for="invPrice">Price</label>
+        <input type="invPrice" readonly <% if(locals.inv_price) { %>
+        value="<%= locals.inv_price %>"<% } %>>
+
+        <label for="invYear">Year</label>
+        <input type="invYear" readonly <% if(locals.inv_year) { %>
+        value="<%= locals.inv_year %>"<% } %>>
+
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id%>" <% } %>>
+    </fieldset>
+</form>

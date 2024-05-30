@@ -28,9 +28,6 @@ async function buildRegister(req, res) {
     })
   }
 
-
-
-
 /* ****************************************
 *  Process Registration
 * *************************************** */
@@ -124,6 +121,10 @@ async function buildLoggedIn(req, res) {
     nav
   })
 }
+
+  /* ****************************************
+*  Deliver view of logged in form
+* *************************************** */
 
 
 module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildLoggedIn }

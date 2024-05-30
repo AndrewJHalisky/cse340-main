@@ -71,4 +71,20 @@ validate.checkClassificationData = async (req, res, next) => {
     next()
   }
 
+validate.checkDeleteData = async (req, res, next) => {
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("inventory/delete", {
+      errors: null,
+      title: "Delete",
+      nav
+    })
+    return
+  }
+  next()
+}
+
+
   module.exports = validate
