@@ -15,11 +15,11 @@
   }) 
   .then(function (data) { 
    console.log(data); 
-   buildInventoryList(data); 
+   buildInventoryList(data);
   }) 
   .catch(function (error) { 
    console.log('There was a problem: ', error.message) 
-  }) 
+  })
  })
 
 // Build inventory items into HTML table components and inject into DOM 

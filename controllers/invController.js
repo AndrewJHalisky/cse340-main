@@ -46,7 +46,7 @@ invCont.buildManagementView = async function (req, res, next) {
     nav,
     errors: null, classificationSelect
   })
-
+}
   // invCont.buildClassificationList = async function (req, res, next) {
   //   const classification_id = req.params.classificationId
   //   const data = await invModel.getInventoryByClassificationId(classification_id)
@@ -82,15 +82,15 @@ invCont.buildManagementView = async function (req, res, next) {
 
   invCont.deleteItem = async function (req, res, next) {
     let nav = await utilities.getNav()
-    inv_id = parseInt(inv_id)
+    const inv_id = parseInt(req.body.inv_id)
     const deleteResult = await invModel.deleteInventoryItem(inv_id)
     if (deleteResult) {
       req.flash("notice", 'The deletion was successful.')
-      res.redirect('/inv/')
+      res.redirect('./inventory/delete')
     }
     else {
       req.flash("notice", 'Sorry, unable to delete.')
-      res.redirect("/inv/delete/" + inv_id)
+      res.redirect("./inventory/delete/" + inv_id)
     }
   }
 
@@ -196,7 +196,7 @@ invCont.buildManagementView = async function (req, res, next) {
       const classificationSelect = await utilities.buildClassificationList(classification_id)
       const itemName = `${inv_make} ${inv_model}`
       req.flash("notice", "Sorry, the insert failed.")
-      res.status(501).render("inv/edit-inventory", {
+      res.status(501).render("/inv/", {
         title: "Edit " + itemName,
         nav,
         classificationSelect: classificationSelect,
@@ -215,5 +215,5 @@ invCont.buildManagementView = async function (req, res, next) {
       })
     }
   }
-}
+
 module.exports = invCont

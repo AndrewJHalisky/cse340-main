@@ -6,7 +6,7 @@
         <% if (locals.loggedin = 0) { %>
         <a id="signIn" title="Click to log in" href="/account/login">My Account</a>
         <% } else { %>
-            <a href="/account">Welcome <%= locals.account_firstname %></a>
+            <a href="/account"><%= locals.account_firstname %></a>
             <a href="/account/login" type="submit" id="logout" name="Logout" value="logout" onclick="change(event)">Logout</a>
         <% } %>
     </div>
