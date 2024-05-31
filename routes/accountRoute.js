@@ -27,15 +27,15 @@ router.post(
   // utilities.handleErrors(accountController.accountLogin),
 )
 
-router.get(
-  "/loggedin",
-  utilities.handleErrors(accountController.buildLoggedIn))
+// router.get(
+//   "/loggedin",
+//   utilities.handleErrors(accountController.buildLoggedIn))
 
-router.post(
-  "/loggedin",
-  regValidate.checkLoggedInData,
-  utilities.handleErrors(accountController.checkLoggedInData)
-)
+// router.post(
+//   "/loggedin",
+//   regValidate.checkLoggedInData,
+//   utilities.handleErrors(accountController.checkLoggedInData)
+// )
 
 router.get(
   "/client-management",
@@ -59,6 +59,15 @@ router.post(
   utilities.handleErrors(accountController.checkEmployeeData)
 )
 
+router.get(
+  "/edit-account",
+  utilities.handleErrors(accountController.buildUpdateAcct)
+)
 
+router.post(
+  "/edit-account",
+  regValidate.checkAcctEditData,
+  utilities.handleErrors(accountController.checkAcctEditData)
+)
 
 module.exports = router;

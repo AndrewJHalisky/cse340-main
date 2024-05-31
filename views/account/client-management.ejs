@@ -1,20 +1,5 @@
-<h1>
-    <%= title %>
-  </h1>
-  <div>
-    <%- messages() %>
-  </div>
-  <% if (errors) { %>
-    <ul class="notice">
-      <% errors.array().forEach(error=> { %>
-        <li>
-          <%= error.msg %>
-        </li>
-        <% }) %>
-    </ul>
-    <% } %>
 <h1>Account Management</h1><br>
-<h2>Welcome <%= account_firstname %></h2><br>
+<h2>Welcome back!</h2><br>
 <p>You're logged in</p><br>
 <a>Edit Account Information</a><br>
 <script src="/js/script.js"></script>

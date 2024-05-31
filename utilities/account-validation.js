@@ -95,12 +95,12 @@ validate.checkRegData = async (req, res, next) => {
     next()
   }
 
-  validate.checkLoggedInData = async (req, res, next) => {
+  validate.checkDeleteData = async (req, res, next) => {
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
-      res.render("/loggedin", {
+      res.render("/delete", {
         errors: null,
         title: "Logged In",
         nav
@@ -131,8 +131,24 @@ validate.checkRegData = async (req, res, next) => {
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
       res.render("/emp-management", {
-        errors: null,
         title: "Employee Management",
+        errors: null,
+        nav
+      })
+      return
+    }
+    next()
+  }
+
+  
+  validate.checkAcctEditData = async (req, res, next) => {
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("/edit-account", {
+        title: "Edit Account Information",
+        errors: null,
         nav
       })
       return

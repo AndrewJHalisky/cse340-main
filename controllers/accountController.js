@@ -128,15 +128,19 @@ async function buildLoggedIn(req, res) {
 
 async function buildEmpManagement(req, res) {
   let nav = await utilities.getNav()
-  res.render("./account/emp-management", {
+  res.render("account/emp-management", {
+    title: 'Employee Management',
     nav
   })
 }
 
 async function buildClientManagement(req, res) {
   let nav = await utilities.getNav()
-  res.render("./account/client-management", {
-    nav
+  res.render("account/client-management", {
+    title: 'Client Management',
+    nav,
+    account_firstname,
+    account_lastname,
   })
 }
 
@@ -146,7 +150,8 @@ async function buildClientManagement(req, res) {
 
 async function buildUpdateAcct(req, res) {
   let nav = await utilities.getNav()
-  res.render("./account/edit-management", {
+  res.render("account/edit-account", {
+    title: 'Edit Account Information',
     nav
   })
 }

@@ -78,6 +78,15 @@
     background-color: rgb(255, 148, 148);
     }
 
+    form {
+    background-color: rgb(255, 185, 185);
+    margin: auto;
+    width: 320px;
+    height: 465px;
+    border-radius: 10px;
+    padding: 20px;
+      }
+
     footer {
     bottom: 25px;
     position: relative;

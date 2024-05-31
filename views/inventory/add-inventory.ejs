@@ -10,6 +10,13 @@
 <p>All fields are required</p>
 <form action="/inv/management" method="post">
     <label for="classifcationList">Classification</label><br>
+    <select>
+      <option value="Custom"></option>
+      <option value="Sedan"></option>
+      <option value="Sports"></option>
+      <option value="SUV"></option>
+      <option value="Truck"></option>
+    </select>
 
     <label for="invDescription">Description</label><br>
     <textarea rows="5" cols="30" required><% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea><br>

@@ -40,9 +40,11 @@ invCont.buildAccountDetails = async function (req, res, next) {
 
 invCont.buildManagementView = async function (req, res, next) {
   let nav = await utilities.getNav()
-  // ... This is the empty space ...
+  const classificationSelect = await utilities.buildClassificationList()
   res.render("./inventory/management", {
-    // ... remaining render code is not shown ...
+    title: 'Vehcile Management',
+    nav,
+    errors: null, classificationSelect
   })
 
   // invCont.buildClassificationList = async function (req, res, next) {
