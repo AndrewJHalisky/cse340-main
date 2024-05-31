@@ -123,8 +123,32 @@ async function buildLoggedIn(req, res) {
 }
 
   /* ****************************************
-*  Deliver view of logged in form
+*  Deliver view of both managements
 * *************************************** */
 
+async function buildEmpManagement(req, res) {
+  let nav = await utilities.getNav()
+  res.render("./account/emp-management", {
+    nav
+  })
+}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildLoggedIn }
+async function buildClientManagement(req, res) {
+  let nav = await utilities.getNav()
+  res.render("./account/client-management", {
+    nav
+  })
+}
+
+  /* ****************************************
+*  Deliver view of update
+* *************************************** */
+
+async function buildUpdateAcct(req, res) {
+  let nav = await utilities.getNav()
+  res.render("./account/edit-management", {
+    nav
+  })
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildLoggedIn, buildEmpManagement, buildUpdateAcct, buildClientManagement }

@@ -45,11 +45,11 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use((req, res, next) => {
-  res.locals.user = req.user
-  res.locals.authenticated = !req.user.anonymous
-  next()
-})
+// app.use((req, res, next) => {
+//   res.locals.user = req.user
+//   res.locals.authenticated = !req.user.anonymous
+//   next()
+// })
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -64,13 +64,13 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(static)
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
-app.get("/", function(req, res){
-  res.render("index", {title: "Home"})
-});
+// app.get("/", function(req, res){
+//   res.render("index", {title: "Home"})
+// });
 // Inventory routes
 app.use("/inv", inventoryRoute)
 // Account routes
-app.use("/account", require("./routes/accountRoute"))
+app.use("/account", account)
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})

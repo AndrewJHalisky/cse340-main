@@ -109,5 +109,35 @@ validate.checkRegData = async (req, res, next) => {
     }
     next()
   }
+
+  validate.checkClientData = async (req, res, next) => {
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("/client-management", {
+        errors: null,
+        title: "Client Management",
+        nav
+      })
+      return
+    }
+    next()
+  }
+
+  validate.checkEmployeeData = async (req, res, next) => {
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("/emp-management", {
+        errors: null,
+        title: "Employee Management",
+        nav
+      })
+      return
+    }
+    next()
+  }
   
   module.exports = validate

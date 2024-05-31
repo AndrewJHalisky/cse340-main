@@ -37,9 +37,9 @@ router.post(
     utilities.handleErrors(invController.buildAccountDetails)
 )
 
-router.get("/delete/:invId", utilities.handleErrors(invController.deleteView))
+router.get("/delete", utilities.handleErrors(invController.deleteView))
 
-router.post("/delete-confirm", 
+router.post("/delete", 
     regValidate.checkDeleteData, 
     utilities.handleErrors(invController.deleteView)
 )

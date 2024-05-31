@@ -1,0 +1,17 @@
+<h1>Edit Account</h1>
+<form class="editform" id="editform" action="" method="post">
+    <label for="firstname">First Name: </label><br>
+    <input type="text" id="account_firstname" required placeholder="First name is required" value="<%= locals.account_firstname %>"><br>
+    <label for="lastname">Last Name: </label><br>
+    <input type="text" id="account_lastname" required placeholder="Last name is required" value="<%= locals.account_lastname %>"><br>
+    <label for="lastname">Email: </label><br>
+    <input type="text" id="account_email" required placeholder="Last name is required" value="<%= locals.account_lastname %>"><br>
+    <input type="submit" value="Update"><br>
+    <h2>Update Password</h2>
+    <p>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter, and 1 special character.</p>
+    <p>*Please note, your original password will be changed.</p>
+    <input type="password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br>
+    <input type="checkbox" id="checkbox">Show Password
+    <input type="submit" value="Change Password">
+</form>
+

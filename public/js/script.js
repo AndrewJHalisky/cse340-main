@@ -7,8 +7,8 @@ let chbx = document.getElementById("checkbox");
             pswd.type = "password";
         }
     }
-        const change = (event) => {
-            const link = document.getElementById("signIn");
-            link.text = link.text === 'My Account' ? 'Welcome basic Logout' : 'My Account';
-            event.preventDefault();
-        }
+const change = (event) => {
+    const link = document.getElementById("logout");
+    link.text = link.text === 'Logout' ? 'My Account' : 'Logout';
+    event.preventDefault();
+}

@@ -37,6 +37,28 @@ router.post(
   utilities.handleErrors(accountController.checkLoggedInData)
 )
 
+router.get(
+  "/client-management",
+  utilities.handleErrors(accountController.buildClientManagement)
+)
+
+router.post(
+  "/client-management",
+  regValidate.checkClientData,
+  utilities.handleErrors(accountController.checkClientData)
+)
+
+router.get(
+  "/emp-management",
+  utilities.handleErrors(accountController.buildEmpManagement)
+)
+
+router.post(
+  "/emp-management",
+  regValidate.checkEmployeeData,
+  utilities.handleErrors(accountController.checkEmployeeData)
+)
+
 
 
 module.exports = router;
