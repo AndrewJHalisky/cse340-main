@@ -38,18 +38,18 @@ async function getInventoryByItemId(inv_id) {
   }
 }
 
-async function getInventoryById(inv_id) {
-  try {
-    const data = await pool.query(
-      `SELECT * FROM public.inventory
-      WHERE inventory.inv_id = $1`,
-      [inv_id]
-    )
-    return data.rows
-  } catch (error) {
-    console.error("getInventoryByItemID error " + error)
-  }
-}
+// async function getInventoryById(inv_id) {
+//   try {
+//     const data = await pool.query(
+//       `SELECT * FROM public.inventory
+//       WHERE inventory.inv_id = $1`,
+//       [inv_id]
+//     )
+//     return data.rows
+//   } catch (error) {
+//     console.error("getInventoryByItemID error " + error)
+//   }
+// }
 
 async function getInventoryByAccountId(account_id) {
   try {
@@ -94,7 +94,6 @@ async function deleteInventoryItem(inv_id) {
 module.exports = {getClassifications,
   getInventoryByClassificationId,
   getInventoryByItemId,
-  getInventoryById,
   getInventoryByAccountId,
   addClassification,
   deleteInventoryItem
