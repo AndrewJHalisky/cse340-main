@@ -92,7 +92,7 @@ Util.buildClassificationDetails = async function(data){
       detail += '<label for="desc">'
       detail += 'Description:'
       detail += '</label>'
-      detail += '<textarea name="desc" id="revDesc" rows="5" cols="50" placeholder="Write your review here" required>'
+      detail += '<textarea name="desc" id="revDesc" rows="5" cols="30" placeholder="Write your review here" required>'
       detail += '</textarea>'
       detail += '<input type="submit" name="submit" id="submit" value="Submit">'
       detail += '</form>'
