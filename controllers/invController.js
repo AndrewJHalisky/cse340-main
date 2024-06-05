@@ -21,12 +21,24 @@ invCont.buildByClassificationId = async function (req, res, next) {
 
 invCont.buildClassificationDetails = async function (req, res, next) {
   const item_id = req.params.itemId
-  const data = await invModel.getInventoryByItemId(item_id)
+  const review_id = req.params.reviewId
+  const data = await invModel.getInventoryByItemId(item_id, review_id)
   const detail = await utilities.buildClassificationDetails(data)
   let nav = await utilities.getNav()
   res.render("./inventory/detail", {
     title: `${data[0].inv_make} ${data[0].inv_model}`,
     nav, detail, next
+  })
+}
+
+invCont.buildReviewDetails = async function (req, res, next) {
+  const review_id = req.params.reviewId
+  const data = await invModel.getReviewById(review_id)
+  const detail = await utilities.buildReviewDetails(data)
+  let nav = await utilities.getNav()
+  res.render("./inventory/review", {
+    title: 'Reviews: ',
+    nav, detail, errors: null
   })
 }
 
@@ -42,7 +54,7 @@ invCont.buildManagementView = async function (req, res, next) {
   let nav = await utilities.getNav()
   const classificationSelect = await utilities.buildClassificationList()
   res.render("./inventory/management", {
-    title: 'Vehcile Management',
+    title: 'Vehicle Management',
     nav,
     errors: null, classificationSelect
   })

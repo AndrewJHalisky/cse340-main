@@ -138,9 +138,7 @@ async function buildClientManagement(req, res) {
   let nav = await utilities.getNav()
   res.render("account/client-management", {
     title: 'Client Management',
-    nav,
-    account_firstname,
-    account_lastname,
+    nav
   })
 }
 

@@ -14,7 +14,7 @@ async function getInventoryByClassificationId(classification_id) {
   try {
     const data = await pool.query(
       `SELECT * FROM public.inventory AS i 
-      JOIN public.classification AS c 
+      JOIN public.classification AS c
       ON i.classification_id = c.classification_id
       WHERE i.classification_id = $1`,
       [classification_id]
@@ -25,16 +25,29 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-async function getInventoryByItemId(inv_id) {
+async function getInventoryByItemId(item_id) {
   try {
     const data = await pool.query(
       `SELECT * FROM public.inventory
       WHERE inventory.inv_id = $1`,
-      [inv_id]
+      [item_id]
     )
     return data.rows
   } catch (error) {
-    console.error("getInventoryByItemID error " + error)
+    console.error("getInventoryByItemId error " + error)
+  }
+}
+
+async function getReviewById(review_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.reviews AS r
+      WHERE r.review_id = $1`
+      [review_id]
+    )
+    return data.rows
+  } catch (error) {
+    console.error("getReviewById error " + error)
   }
 }
 
@@ -94,6 +107,7 @@ async function deleteInventoryItem(inv_id) {
 module.exports = {getClassifications,
   getInventoryByClassificationId,
   getInventoryByItemId,
+  getReviewById,
   getInventoryByAccountId,
   addClassification,
   deleteInventoryItem

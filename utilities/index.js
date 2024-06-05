@@ -37,7 +37,7 @@ Util.buildClassificationGrid = async function(data){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
       grid += '<li>'
-      grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
+      grid +=  '<a href="../../inv/detail/' + vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
@@ -78,12 +78,39 @@ Util.buildClassificationDetails = async function(data){
       detail += 'Color: ' + vehicle.inv_color
       detail += '</p>'
       detail += '<p>'
-      detail += 'Miles: <span>' 
+      detail += 'Miles: <span>'
       + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</span>'
       detail += '</p>'
       detail += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
       detail += '</div>'
+      detail += '<h1>'
+      detail += '<form method="post" href="../../inv/detail/' + vehicle.review_id 
+      + '" title="View >'
+      detail += 'Write a Review:'
+      detail += '</h1>'
+      detail += '<label for="desc">'
+      detail += 'Description:'
+      detail += '</label>'
+      detail += '<textarea name="desc" id="revDesc" rows="5" cols="50" placeholder="Write your review here" required>'
+      detail += '</textarea>'
+      detail += '<input type="submit" name="submit" id="submit" value="Submit">'
+      detail += '</form>'
+      detail += '<br>'
+      detail += '<h2>'
+      detail += 'Reviews:'
+      detail += '</h2>'
+      detail += vehicle.review_id + '<br>'
+      detail += vehicle.review_text + '<br>'
+      detail += vehicle.review_date + '<br>'
+      detail += '<div id="reviewField" style="display: block;">'
+      detail += '</div>'
+      detail += '<script>'
+      detail += 'function displayReview() { var text = document.getElementById("reviewField"); text.style.display = "block" } '
+      detail += '</script>'
+      console.log(vehicle.review_id);
+      console.log(vehicle.review_text);
+      console.log(vehicle.review_date);
     })
     detail += '</ul>'
   } else { 
@@ -91,6 +118,36 @@ Util.buildClassificationDetails = async function(data){
   }
   return detail
 }
+
+Util.buildReviewDetails = async function(data) {
+  let reviews
+  if (data.length > 0) {
+    reviews = '<ul id="review-display">'
+    data.forEach(vehicle => {
+      reviews += '<div class="review-display">'
+      reviews += '<h1>'
+      reviews += 'Reviews: '
+      reviews += '</h1>'
+      reviews += vehicle.review_id + ''
+      reviews += vehicle.review_text + ''
+      reviews += vehicle.review_date + ''
+      reviews += '<div id="reviewField" style="display: none;">'
+      reviews += '</div>'
+      reviews += '</div>'
+  }) 
+    reviews += '</ul>'
+  } else {
+    reviews += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return review
+}
+
+// Util.buildReviewDetails = async function(data){
+//   let detail = '<ul id="detail-review">'
+//   data.forEach(vehicle => {
+    
+//   })
+// }
 
 Util.buildClassificationList = async function (classification_id = null) {
   let data = await invModel.getClassifications()
